@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://kit.fontawesome.com/901709e834.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="total" ng-app="myApp" ng-controller="myCtrl" ng-init="cond=false;cond3=false">
+        <div id="top">
+            <i  ng-click="display()" class="fa-solid fa-house" id="home"></i>
+            <input id="search" type="search" placeholder="Search....." ng-model="searchInput"/>
+            <span>
+                <i class="fa-solid fa-cart-shopping" id="cartimage" ng-click="cart2()"></i>
+                
+                <sup id="cartnum"><h1>{{cartlength}}</h1></sup>
+            </span>
+        </div>
+        <div id="middle">
+                
+            <div class="arrangeproducts">
+                <div ng-repeat="x in data | filter : searchInput" ng-show="cond" class="products-div">
+                    <h1>{{x.title}}</h1>
+                    <img src="{{x.images.medium.url}}">
+                    <h3>{{x.price}}Rs</h3>
+                    <h2>more details....</h2>
+                    <br>
+                    <button ng-click="view($index)" id="viewbutton">view</button>
+                
+                </div>
+
+            </div>
+
+
+            <div ng-show="cond2" class="view">
+                <h1>{{title}}</h1>
+                <p><img src="{{image}}"></p>
+                <p><h2>MRP:</h2>Rs{{cost}}</p>
+                <p><h2>Brand name:</h2>{{brand}}</p>
+                <p><h2>model:</h2>{{model}}</p>
+                <p><h2>id:</h2>{{id}}</p>
+                <p><h2>features:</h2><li>{{feature1}}</li>
+                    <li>{{feature2}}</li>
+                </p>
+                <button ng-click="cart(index)" id="addtocart">Add to cart</button>
+            </div>
+    
+            <div ng-show="cond3" ng-repeat="x in newarray" class="view">
+                <h1>{{x.title}}</h1>
+                <p><img src="{{x.image}}"></p>
+                <p><h2>MRP :</h2>Rs{{x.cost}}</p>
+                <p><h2>Brand name:</h2>{{x.brand}}</p>
+                <p><h2>model:</h2>{{x.model}}</p>
+                <p><h2>id:</h2>{{x.id}}</p>
+                <p><h2>features:</h2>
+                    <li>{{x.feature1}}</li>
+                    <li>{{x.feature2}}</li>
+                </p>
+    
+            </div>
+        </div>
+
+        
+
+        
+
+    
+
+    </div>
+    <script src="myapp.js"></script>
+    <script src="mycontroller.js"></script>
+    
+</body>
+</html>
